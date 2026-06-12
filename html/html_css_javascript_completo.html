@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML, CSS e JavaScript Avançado</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    nav {
+      background: #f8f9fa;
+      padding: 0;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav button {
+      background: none;
+      border: none;
+      padding: 15px 25px;
+      cursor: pointer;
+      font-size: 1em;
+      color: #333;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    nav button:hover {
+      background: #e0e0e0;
+      color: #667eea;
+    }
+
+    nav button.active {
+      background: #667eea;
+      color: white;
+      border-bottom: 3px solid #764ba2;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #667eea;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin: 20px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 1em;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    input[type="number"]:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin-right: 10px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .toggle-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #667eea;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .box:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .box.clicked {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      transform: scale(0.95);
+    }
+
+    .output {
+      background: #f0f4ff;
+      border: 2px solid #667eea;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      min-height: 50px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    th {
+      background: #f8f9fa;
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    .tag-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .tag-item {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+    }
+
+    .tag-item code {
+      color: #764ba2;
+      font-weight: 600;
+    }
+
+    footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      border-top: 2px solid #e0e0e0;
+      color: #666;
+    }
+
+    .alert {
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+    }
+
+    .alert-info {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      color: #1565c0;
+    }
+
+    .alert-warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      color: #e65100;
+    }
+
+    .alert-success {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      color: #1b5e20;
+    }
+
+    .grid-example {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .grid-item {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      border: 2px solid #e0e0e0;
+    }
+
+    @media (max-width: 768px) {
+      .grid-example {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav button {
+        width: 100%;
+      }
+
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .content {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🚀 HTML, CSS e JavaScript Completo</h1>
+      <p>Aprenda tags, estilização e interatividade</p>
+    </header>
+
+    <nav>
+      <button class="tab-btn active" data-tab="html-tags">Tags HTML</button>
+      <button class="tab-btn" data-tab="css-exemplos">CSS Prático</button>
+      <button class="tab-btn" data-tab="js-interativo">JavaScript</button>
+      <button class="tab-btn" data-tab="formulario">Formulários</button>
+      <button class="tab-btn" data-tab="grid-flex">Layout Moderno</button>
+    </nav>
+
+    <div class="content">
+
+      <!-- SEÇÃO 1: TAGS HTML -->
+      <section id="html-tags" class="active">
+        <h2>Tags HTML Mais Usadas</h2>
+        <p>Conheça as principais tags HTML e suas funcionalidades:</p>
+
+        <div class="tag-list">
+          <div class="tag-item">
+            <h4><code>&lt;h1&gt; a &lt;h6&gt;</code></h4>
+            <p>Títulos e subtítulos. <code>&lt;h1&gt;</code> é o mais importante, <code>&lt;h6&gt;</code> o menos.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;p&gt;</code></h4>
+            <p>Parágrafo de texto. Use para blocos de conteúdo textual.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;a&gt;</code></h4>
+            <p>Link. Exemplo: <code>&lt;a href="url"&gt;clique aqui&lt;/a&gt;</code></p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;img&gt;</code></h4>
+            <p>Imagem. Exemplo: <code>&lt;img src="imagem.jpg" alt="descrição"&gt;</code></p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;div&gt;</code></h4>
+            <p>Contêiner genérico para agrupar elementos e aplicar estilos.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;span&gt;</code></h4>
+            <p>Contêiner inline. Menor que <code>&lt;div&gt;</code>, para textos.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</code></h4>
+            <p><code>&lt;ul&gt;</code> lista sem ordem, <code>&lt;ol&gt;</code> com ordem. <code>&lt;li&gt;</code> é cada item.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;</code></h4>
+            <p>Tabelas. Use para dados tabulares, não para layout.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;form&gt;</code></h4>
+            <p>Formulário para coleta de dados. Contém <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, etc.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;input&gt;</code></h4>
+            <p>Entrada de dados. Tipos: text, email, password, number, checkbox, radio, etc.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;button&gt;</code></h4>
+            <p>Botão clicável. Pode estar dentro de <code>&lt;form&gt;</code> ou ser usado com JavaScript.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;select&gt;, &lt;option&gt;</code></h4>
+            <p>Menu suspenso. <code>&lt;option&gt;</code> são as opções disponíveis.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;label&gt;</code></h4>
+            <p>Rótulo para inputs. Melhora acessibilidade e usabilidade.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;section&gt;, &lt;article&gt;, &lt;nav&gt;, &lt;footer&gt;, &lt;header&gt;</code></h4>
+            <p>Tags semânticas para melhor estrutura e acessibilidade.</p>
+          </div>
+
+          <div class="tag-item">
+            <h4><code>&lt;br&gt;, &lt;hr&gt;</code></h4>
+            <p><code>&lt;br&gt;</code> quebra linha. <code>&lt;hr&gt;</code> linha horizontal.</p>
+          </div>
+        </div>
+
+        <h3>Exemplo de estrutura básica:</h3>
+        <div class="code-block">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Minha Página&lt;/title&gt;
+  &lt;link rel="stylesheet" href="estilo.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Bem-vindo&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="#"&gt;Home&lt;/a&gt;
+      &lt;a href="#"&gt;Sobre&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Artigo&lt;/h2&gt;
+      &lt;p&gt;Conteúdo aqui...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;© 2026&lt;/p&gt;
+  &lt;/footer&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+        </div>
+      </section>
+
+      <!-- SEÇÃO 2: CSS PRÁTICO -->
+      <section id="css-exemplos">
+        <h2>CSS Prático e Exemplos</h2>
+
+        <div class="card">
+          <h3>Cores e Gradientes</h3>
+          <p>CSS permite cores sólidas, gradientes e muito mais:</p>
+          <div class="code-block">
+/* Cor sólida */
+background: #667eea;
+
+/* Cor RGB */
+background: rgb(102, 126, 234);
+
+/* Gradiente linear */
+background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+/* Gradiente radial */
+background: radial-gradient(circle, #667eea 0%, #764ba2 100%);
+          </div>
+          <div style="width: 100%; height: 100px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; margin-top: 10px;"></div>
+        </div>
+
+        <div class="card">
+          <h3>Flexbox - Layout flexível</h3>
+          <p>Flexbox ajuda a criar layouts responsivos:</p>
+          <div class="code-block">
+.container {
+  display: flex;
+  justify-content: center;  /* Alinha horizontalmente */
+  align-items: center;      /* Alinha verticalmente */
+  gap: 10px;                /* Espaço entre itens */
+  flex-wrap: wrap;          /* Quebra em múltiplas linhas */
+}
+
+.item {
+  flex: 1;                  /* Crescem igualmente */
+  min-width: 200px;
+}
+          </div>
+          <div style="display: flex; justify-content: space-around; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+            <div class="box" style="margin: 0;"></div>
+            <div class="box" style="margin: 0;"></div>
+            <div class="box" style="margin: 0;"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Transições e Animações</h3>
+          <p>Adicione movimento e suavidade com CSS:</p>
+          <div class="code-block">
+/* Transição suave */
+button {
+  transition: all 0.3s ease;
+}
+
+/* Animação */
+@keyframes slide {
+  from { transform: translateX(-100px); }
+  to { transform: translateX(0); }
+}
+
+.elemento {
+  animation: slide 0.5s ease;
+}
+          </div>
+          <button onclick="alert('Clique! Veja a transição suave.')">Clique aqui</button>
+        </div>
+
+        <div class="card">
+          <h3>Sombras e Bordas</h3>
+          <div class="code-block">
+/* Sombra de caixa */
+box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+
+/* Borda arredondada */
+border-radius: 8px;
+
+/* Sombra de texto */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          </div>
+          <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3); text-align: center; margin-top: 10px;">
+            <p style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); font-weight: bold;">Texto com sombra</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 3: JAVASCRIPT INTERATIVO -->
+      <section id="js-interativo">
+        <h2>JavaScript Interativo</h2>
+
+        <div class="card">
+          <h3>Manipular o DOM</h3>
+          <p>Clique no quadrado para ver JavaScript em ação:</p>
+          <div class="box" id="interactiveBox"></div>
+          <div class="output">
+            <strong>Saída:</strong> <span id="output">Clique no quadrado acima</span>
+          </div>
+          <div class="code-block">
+document.getElementById('interactiveBox').addEventListener('click', function() {
+  this.classList.toggle('clicked');
+  document.getElementById('output').textContent = 'Você clicou! ✓';
+});
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Validação de Formulário</h3>
+          <form onsubmit="validarFormulario(event)">
+            <div class="form-group">
+              <label for="nome">Nome:</label>
+              <input type="text" id="nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email2">Email:</label>
+              <input type="email" id="email2" required>
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+          <div class="code-block">
+function validarFormulario(event) {
+  event.preventDefault();
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('email2').value;
+  
+  if (nome && email) {
+    alert(`Bem-vindo, ${nome}!`);
+  }
+}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Operações com Números</h3>
+          <div class="form-group">
+            <label for="num1">Número 1:</label>
+            <input type="number" id="num1" value="5">
+          </div>
+          <div class="form-group">
+            <label for="num2">Número 2:</label>
+            <input type="number" id="num2" value="3">
+          </div>
+          <button onclick="calcularOperacoes()">Calcular</button>
+          <div class="output" id="calcOutput">Resultado aqui</div>
+          <div class="code-block">
+function calcularOperacoes() {
+  const num1 = parseFloat(document.getElementById('num1').value);
+  const num2 = parseFloat(document.getElementById('num2').value);
+  
+  const soma = num1 + num2;
+  const produto = num1 * num2;
+  
+  document.getElementById('calcOutput').innerHTML = `
+    Soma: ${soma}<br>
+    Produto: ${produto}
+  `;
+}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Hora e Data</h3>
+          <button onclick="mostrarDataHora()">Mostrar Data/Hora</button>
+          <div class="output" id="dataHoraOutput">Clique no botão acima</div>
+          <div class="code-block">
+function mostrarDataHora() {
+  const agora = new Date();
+  document.getElementById('dataHoraOutput').textContent = 
+    agora.toLocaleString('pt-BR');
+}
+          </div>
+        </div>
+      </section>
+
+      <!-- SEÇÃO 4: FORMULÁRIOS -->
+      <section id="formulario">
+        <h2>Formulários e Inputs</h2>
+
+        <form onsubmit="enviarForm(event)">
+          <div class="card">
+            <h3>Tipos de Input</h3>
+
+            <div class="form-group">
+              <label for="textInput">Texto simples:</label>
+              <input type="text" id="textInput" placeholder="Digite seu nome">
+            </div>
+
+            <div class="form-group">
+              <label for="emailInput">Email:</label>
+              <input type="email" id="emailInput" placeholder="seu@email.com">
+            </div>
+
+            <div class="form-group">
+              <label for="passwordInput">Senha:</label>
+              <input type="password" id="passwordInput" placeholder="Digite sua senha">
+            </div>
+
+            <div class="form-group">
+              <label for="numberInput">Número:</label>
+              <input type="number" id="numberInput" min="1" max="100" value="50">
+            </div>
+
+            <div class="form-group">
+              <label for="dateInput">Data:</label>
+              <input type="date" id="dateInput">
+            </div>
+
+            <div class="form-group">
+              <label for="colorInput">Cor:</label>
+              <input type="color" id="colorInput" value="#667eea">
+            </div>
+
+            <div class="form-group">
+              <label for="rangeInput">Intervalo (0-100):</label>
+              <input type="range" id="rangeInput" min="0" max="100" value="50" onchange="document.getElementById('rangeValue').textContent = this.value">
+              <p>Valor: <span id="rangeValue">50</span></p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Checkboxes e Radio</h3>
+
+            <div class="form-group">
+              <label><input type="checkbox"> Concordo com os termos</label>
+              <label><input type="checkbox"> Inscrever-se na newsletter</label>
+            </div>
+
+            <div class="form-group">
+              <p>Escolha um:</p>
+              <label><input type="radio" name="opcao"> Opção A</label>
+              <label><input type="radio" name="opcao"> Opção B</label>
+              <label><input type="radio" name="opcao"> Opção C</label>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Select e Textarea</h3>
+
+            <div class="form-group">
+              <label for="selectInput">Escolha um país:</label>
+              <select id="selectInput">
+                <option>Selecione...</option>
+                <option>Brasil</option>
+                <option>Portugal</option>
+                <option>Angola</option>
+                <option>Moçambique</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="textareaInput">Mensagem:</label>
+              <textarea id="textareaInput" placeholder="Digite sua mensagem aqui..."></textarea>
+            </div>
+
+            <button type="submit">Enviar Formulário</button>
+          </div>
+        </form>
+
+        <div class="code-block">
+&lt;form onsubmit="enviarForm(event)"&gt;
+  &lt;input type="text" placeholder="Nome"&gt;
+  &lt;input type="email" placeholder="Email"&gt;
+  &lt;textarea placeholder="Mensagem"&gt;&lt;/textarea&gt;
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;
+        </div>
+      </section>
+
+      <!-- SEÇÃO 5: GRID E FLEX -->
+      <section id="grid-flex">
+        <h2>Layout Moderno: Grid e Flexbox</h2>
+
+        <div class="card">
+          <h3>CSS Grid</h3>
+          <p>Grid de 3 colunas (responsivo):</p>
+          <div class="grid-example">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item">Item 2</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item">Item 6</div>
+          </div>
+          <div class="code-block">
+.grid-example {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+/* Em telas pequenas */
+@media (max-width: 768px) {
+  .grid-example {
+    grid-template-columns: 1fr;
+  }
+}
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Diferença entre Grid e Flexbox</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Grid</th>
+                <th>Flexbox</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dimensões</td>
+                <td>2D (linhas e colunas)</td>
+                <td>1D (linha ou coluna)</td>
+              </tr>
+              <tr>
+                <td>Melhor para</td>
+                <td>Layouts complexos</td>
+                <td>Alinhamento e distribuição</td>
+              </tr>
+              <tr>
+                <td>Uso comum</td>
+                <td>Página inteira</td>
+                <td>Barra de navegação, cards</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="alert alert-success">
+          <strong>✓ Dica:</strong> Use Grid para layouts gerais e Flexbox para alinhamento de componentes.
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2026 - Tutorial HTML, CSS e JavaScript | Criado para aprendizado</p>
+    </footer>
+  </div>
+
+  <script>
+    // Navegação entre abas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        
+        // Remove active de todos
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        
+        // Adiciona active no selecionado
+        this.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // Exemplo 1: Box interativo
+    document.getElementById('interactiveBox').addEventListener('click', function() {
+      this.classList.toggle('clicked');
+      document.getElementById('output').textContent = 'Você clicou! ✓ Clique novamente para reverter.';
+    });
+
+    // Exemplo 2: Validação de formulário
+    function validarFormulario(event) {
+      event.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email2').value;
+      
+      if (nome && email) {
+        alert(`Bem-vindo, ${nome}! Email registrado: ${email}`);
+        event.target.reset();
+      } else {
+        alert('Preencha todos os campos!');
+      }
+    }
+
+    // Exemplo 3: Cálculos
+    function calcularOperacoes() {
+      const num1 = parseFloat(document.getElementById('num1').value) || 0;
+      const num2 = parseFloat(document.getElementById('num2').value) || 0;
+      
+      const soma = num1 + num2;
+      const subtracao = num1 - num2;
+      const produto = num1 * num2;
+      const divisao = num2 !== 0 ? (num1 / num2).toFixed(2) : 'Indefinido';
+      
+      document.getElementById('calcOutput').innerHTML = `
+        <strong>Resultados:</strong><br>
+        Soma: ${soma}<br>
+        Subtração: ${subtracao}<br>
+        Produto: ${produto}<br>
+        Divisão: ${divisao}
+      `;
+    }
+
+    // Exemplo 4: Data e hora
+    function mostrarDataHora() {
+      const agora = new Date();
+      const opcoes = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      document.getElementById('dataHoraOutput').textContent = agora.toLocaleString('pt-BR', opcoes);
+    }
+
+    // Exemplo 5: Enviar formulário
+    function enviarForm(event) {
+      event.preventDefault();
+      const nome = document.getElementById('textInput').value;
+      const email = document.getElementById('emailInput').value;
+      
+      if (nome && email) {
+        const alert_msg = `
+          Formulário enviado com sucesso!
+          Nome: ${nome}
+          Email: ${email}
+        `;
+        alert(alert_msg);
+        event.target.reset();
+      } else {
+        alert('Por favor, preencha todos os campos obrigatórios!');
+      }
+    }
+  </script>
+</body>
+</html>

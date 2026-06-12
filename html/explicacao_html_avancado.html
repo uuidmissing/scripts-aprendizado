@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explicação HTML Avançado</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9fafb;
+      color: #111827;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+    h1, h2, h3 {
+      color: #1f2937;
+    }
+    .example {
+      background: #f3f4f6;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      margin: 20px 0;
+      font-family: Consolas, 'Courier New', monospace;
+      white-space: pre-wrap;
+    }
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .note {
+      background: #eef2ff;
+      border-left: 4px solid #6366f1;
+      padding: 14px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>HTML Avançado: Divs, Classes e Estrutura</h1>
+    <p>Este documento explica conceitos um pouco mais avançados de HTML, como <code>&lt;div&gt;</code>, classes e organização semântica.</p>
+
+    <section class="card">
+      <h2>O que é HTML?</h2>
+      <p>HTML significa <strong>HyperText Markup Language</strong>. Ele define a estrutura de uma página Web usando elementos como:</p>
+      <ul>
+        <li><code>&lt;h1&gt;</code>, <code>&lt;h2&gt;</code> — títulos e subtítulos</li>
+        <li><code>&lt;p&gt;</code> — parágrafos de texto</li>
+        <li><code>&lt;a&gt;</code> — links</li>
+        <li><code>&lt;img&gt;</code> — imagens</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>O que é uma <code>&lt;div&gt;</code>?</h2>
+      <p><code>&lt;div&gt;</code> é um contêiner genérico usado para agrupar conteúdo quando não há um elemento semântico específico apropriado.</p>
+      <p>Use <code>&lt;div&gt;</code> para estruturar o layout, especialmente quando precisar aplicar estilos ou scripts.</p>
+      <div class="example">
+&lt;div class="card">
+  &lt;h2&gt;Título&lt;/h2&gt;
+  &lt;p&gt;Conteúdo do cartão.&lt;/p&gt;
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>O que são classes?</h2>
+      <p>Classes são atributos atribuídos a elementos HTML para aplicar estilos ou selecionar elementos via CSS/JavaScript.</p>
+      <div class="example">
+&lt;div class="card destaque">
+  &lt;h3&gt;Cartão de Exemplo&lt;/h3&gt;
+  &lt;p&gt;Use classes para estilizar ou controlar comportamento.&lt;/p&gt;
+&lt;/div&gt;
+      </div>
+      <p>Um elemento pode ter várias classes separadas por espaço:</p>
+      <div class="example">
+&lt;div class="card destaque grande">
+  ...
+&lt;/div&gt;
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Exemplo prático com <code>&lt;div&gt;</code> e classes</h2>
+      <p>Veja abaixo um layout simples usando divs e classes:</p>
+      <div class="example">
+&lt;div class="container">
+  &lt;div class="header"&gt;
+    &lt;h1&gt;Cabeçalho&lt;/h1&gt;
+  &lt;/div&gt;
+  &lt;div class="content"&gt;
+    &lt;div class="card"&gt;
+      &lt;h2&gt;Cartão 1&lt;/h2&gt;
+      &lt;p&gt;Texto dentro do cartão.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="card"&gt;
+      &lt;h2&gt;Cartão 2&lt;/h2&gt;
+      &lt;p&gt;Outro texto dentro de outro cartão.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+      </div>
+      <p>Esse código cria uma estrutura clara para aplicar CSS e JavaScript depois.</p>
+    </section>
+
+    <section class="card">
+      <h2>Semântica vs. estrutura</h2>
+      <p>Embora <code>&lt;div&gt;</code> seja útil, use elementos semânticos sempre que possível:</p>
+      <ul>
+        <li><code>&lt;header&gt;</code> para cabeçalho</li>
+        <li><code>&lt;nav&gt;</code> para navegação</li>
+        <li><code>&lt;article&gt;</code> para conteúdo independente</li>
+        <li><code>&lt;section&gt;</code> para seções temáticas</li>
+        <li><code>&lt;footer&gt;</code> para rodapé</li>
+      </ul>
+      <p>Use <code>&lt;div&gt;</code> quando não houver elemento semântico adequado, mas prefira HTML semântico para melhor acessibilidade.</p>
+    </section>
+
+    <section class="note">
+      <h3>Dica</h3>
+      <p>Classes são especialmente úteis quando combinadas com CSS moderno e frameworks como Tailwind, Bootstrap ou outras bibliotecas.</p>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,45 +1,73 @@
 <!DOCTYPE html>
-  
-<html lang="PT-BR">
-  
-  <head>
-  <title>Meu HTML</title>
-  </head>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemplo HTML Moderno</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .page {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 24px;
+      background: #ffffff;
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+    }
+    h1 {
+      margin-top: 0;
+      color: #1d4ed8;
+    }
+    p {
+      line-height: 1.8;
+    }
+    .highlight {
+      color: #dc2626;
+      font-weight: bold;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+    }
+    th, td {
+      border: 2px solid #2563eb;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #eff6ff;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Olá, mundo!</h1>
+    <p>Este é um exemplo de HTML moderno e válido.</p>
+    <p class="highlight">Não use <code>&lt;font&gt;</code> ou <code>&lt;marquee&gt;</code>, pois são elementos obsoletos.</p>
 
-  <body bgcolor="gray">
-
-    <h1>Ola mundo</h1>
-    <p>esse é um teste de html</p>
-    <p><font color="red">Essa fonte é vermelha</font></p>
-    <marquee><font color="red" align="center">texto em marquee</font></marquee>
-    <hr>
-    <table border="3" bgcolor="gray" align="center" bordercolor="blue"">
-      <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-          <td>3</td>
+    <section>
+      <h2>Exemplo de tabela</h2>
+      <p>Use tabelas apenas para dados tabulares, não para layout.</p>
+      <table>
+        <tr>
+          <th>Coluna 1</th>
+          <th>Coluna 2</th>
+          <th>Coluna 3</th>
         </tr>
-
-
+        <tr>
+          <td>Item A</td>
+          <td>Item B</td>
+          <td>Item C</td>
+        </tr>
       </table>
-
-
-
-
-
-
-
-  </body>
-
-
-
-
-
-
+    </section>
+  </div>
+</body>
 </html>
-
