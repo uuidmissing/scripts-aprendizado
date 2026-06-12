@@ -177,14 +177,85 @@ Tabela de referência: `%s`, `%b`, `$var`, `${var}`
 
 ---
 
-## 🐍 Python3 - Ainda para consolidar
+## 🐍 Python3 - Consolidados (3 novos)
 
-Os arquivos Python3 ainda precisam de consolidação similar:
-- `python3_def.py` + `python3_lambda` → consolidar em `python_lambdas_vs_def.py`
-- `pratica.py` + arquivos de URLs → consolidar em `python_urls_dominios.py`
-- `aulaIA.py` + `guia_de_python3` → consolidar em `python_fundamentos.py`
-- `subd.py` → `python_subdomains.py` (renomear)
-- `teste_do_sys.py` + `instaladorlinux_python3.py` → consolidar em `python_sistemas.py`
+### Python - Fundamentos
+**Arquivo:** `python_fundamentos.py`
+
+Cobre:
+- Listas e dicionários
+- Manipulação de dados com `input()`
+- Loops: for, while, enumerate
+- Try/except para validação
+- Listas de dicionários (estruturas de dados)
+- Função `len()`, `set()`, `set().union()`
+- Pacotes e módulos (`__init__.py`)
+- Função `__main__`
+- Modificação de `sys.path`
+
+Consolida:
+- `aulaIA.py`
+- `guia_de_python3`
+- `explicacao_do_init.py.txt`
+- `teste_do_sys.py`
+
+---
+
+### Python - URLs e Domínios
+**Arquivo:** `python_urls_e_dominios.py`
+
+Cobre:
+- Requisições HTTP com `requests`
+- Status codes (2xx, 3xx, 4xx, 5xx)
+- Argumentos de linha de comando (`sys.argv`)
+- Tratamento de exceções (`RequestException`, `Timeout`)
+- Correção de URLs
+- Verificação de disponibilidade
+- Processamento em lote
+
+Consolida:
+- `python3_def.py`
+- `pratica.py`
+
+---
+
+### Python - Enumeração de Subdomínios
+**Arquivo:** `python_subdomains.py`
+
+Cobre:
+- Brute force básico de subdomínios
+- Listas de palavras comuns
+- Requisições com timeout
+- Tratamento de erros
+- Salvamento em arquivo
+- Validação com DNS (conceito)
+- Enumerador completo
+
+Consolida:
+- `subd.py`
+
+---
+
+### Python - Funções Utilitárias
+**Arquivo:** `funcoes.py`
+
+Ainda existe como arquivo individual. Cobre:
+- Operações com listas
+- Operações com domínios
+- Operações com dicionários
+- Funções reutilizáveis
+
+---
+
+### Python - Automação de Sistema
+**Arquivo:** `instaladorlinux_python3.py`
+
+Ainda existe como arquivo individual. Cobre:
+- Automação no Kali Linux
+- Subprocess para executar comandos
+- Cores ANSI
+- Clone e atualização de repositórios
+- Instalação de ferramentas
 
 ## 📊 Estatísticas
 
@@ -194,10 +265,12 @@ Os arquivos Python3 ainda precisam de consolidação similar:
 - Organização por tópico inconsistente
 
 **Depois:**
-- 6 arquivos consolidados em Bash
-- ~111KB de conteúdo bem organizado
+- 6 arquivos consolidados em Bash (111KB)
+- 3 arquivos consolidados em Python (55KB)
+- ~166KB de conteúdo bem organizado
 - Cada tema em um arquivo único
 - Exemplos, explicações e boas práticas integradas
+- 2 arquivos específicos preservados (funcoes.py, instaladorlinux_python3.py)
 
 ## 🎓 Como Usar
 
@@ -209,7 +282,8 @@ Os arquivos Python3 ainda precisam de consolidação similar:
 
 ## ✅ Próximos Passos
 
-- [ ] Consolidar arquivos Python3 usando o mesmo padrão
-- [ ] Criar arquivo principal `ESTRUTURA.md` documentando toda a organização
-- [ ] Adicionar exemplos interativos de entrada do usuário
-- [ ] Criar testes automatizados para cada tema
+- [ ] Criar arquivo principal `README_EDUCACAO.md` com guia de estudo recomendado
+- [ ] Melhorar `funcoes.py` (corrigir bugs e expandir)
+- [ ] Criar exemplos interativos com entrada do usuário
+- [ ] Adicionar testes automatizados para cada tema
+- [ ] Criar repositório de wordlists para OSINT
