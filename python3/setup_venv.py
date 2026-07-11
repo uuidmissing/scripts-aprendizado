@@ -38,6 +38,9 @@ def print_explanation() -> None:
     )
     print()
     print("Este script cria o venv no diretório python3/ e também adiciona o caminho ao .gitignore.")
+    print(
+        "Você pode instalar as dependências depois com: python -m pip install -r python3/requirements.txt"
+    )
     print("Assim, seu ambiente local não será versionado acidentalmente.\n")
 
 
