@@ -16,6 +16,14 @@ logs/             # Pasta de logs, se existir
 node_modules/     # Pasta padrão de projetos Node.js
 
 # ========================================
+# Ignorar ambientes virtuais Python locais
+# ========================================
+python3/.venv/
+python3/venv/
+python3/env/
+python3/*_venv/
+
+# ========================================
 # Ignorar arquivos Python gerados
 # ========================================
 __pycache__/      # Cache Python

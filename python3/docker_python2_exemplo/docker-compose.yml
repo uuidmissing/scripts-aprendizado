@@ -1,0 +1,7 @@
+services:
+  python2:
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: python app.py
