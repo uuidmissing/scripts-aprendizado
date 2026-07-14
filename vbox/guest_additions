@@ -1,6 +1,7 @@
 # 1️⃣ Inserir imagem do Guest Additions
 # No VirtualBox: Dispositivos → Inserir imagem de CD dos Guest Additions
 # Na VM, o CD aparecerá em /media/$USER/VBox_GAs_<versão>/ ou no desktop
+# Se a resolução da tela estiver pequena, use right-ctrl + F para alternar para tela cheia e verificar se o guest additions está funcionando corretamente
 
 # 2️⃣ Instalar via terminal
 cd /media/$USER/VBox_GAs_*/
