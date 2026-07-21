@@ -1,6 +1,6 @@
-# comandos_para_aprendizado
+# scripts-aprendizado
 
-Os scripts neste repositório são para estudo e revisão, ajudando no aprendizado de Bash, Python e Git.
+Os scripts neste repositório são para estudo e revisão, ajudando no aprendizado de Bash, Python, html e Git.
 
 ## Novos tutoriais
 
