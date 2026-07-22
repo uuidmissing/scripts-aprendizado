@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Definir o nome do usuário e o nome do repositório a duas variavéis no codigo
-username="Sans01hp"   # Altere aqui o nome do dono do repositório que onde deseja baixar o repositório
-reponame="testes_shellscript"   # Altere aqui o nome do repositorio que deseja baixar
+username="nome_do_usuario"   # Altere aqui o nome do dono do repositório que onde deseja baixar o repositório
+reponame="nome_do_repositorio"   # Altere aqui o nome do repositorio que deseja baixar
 
 
 # Faz a verificação se esse diretorio/repositório ja existe.
@@ -13,7 +13,7 @@ echo -e "deseja instalar a versão mais recente?(y/n)"
 read escolha #variavel "escolha" irá armazenar a resposta (y/n) para comparar com o bloco case
 case $escolha in 
 y|Y) 
-     cd ~/$reponame
+     cd ~/$reponame || echo "Erro ao navegar para o diretório do repositório" && exit 1
      git reset --hard 
      git pull
      ;;
